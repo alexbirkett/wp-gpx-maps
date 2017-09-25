@@ -232,6 +232,7 @@
 				<input type="radio" name="wpgpxmaps_map_type" value="OSM5" <?php if ($t == 'OSM5') echo 'checked'; ?>> Open Cycle Map - Landscape<br />
 				<input type="radio" name="wpgpxmaps_map_type" value="OSM3" <?php if ($t == 'OSM3') echo 'checked'; ?>> Hike & Bike<br />
 				<input type="radio" name="wpgpxmaps_map_type" value="OSM6" <?php if ($t == 'OSM6') echo 'checked'; ?>> MapToolKit - Terrain<br />
+				<input type="radio" name="wpgpxmaps_map_type" value="SKYVECTOR" <?php if ($t == 'SKYVECTOR') echo 'checked'; ?>> Skyvector<br />
 			</td>
 		</tr>
 		

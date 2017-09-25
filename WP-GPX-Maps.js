@@ -152,6 +152,7 @@ Author URI: http://www.pedemontanadelgrappa.it/
 		mapTypeIds.push("OSM4");
 		mapTypeIds.push("OSM5");
 		mapTypeIds.push("OSM6");
+		mapTypeIds.push("SKYVECTOR");
 		
 		var ngImageMarkers = [];
 		
@@ -166,6 +167,7 @@ Author URI: http://www.pedemontanadelgrappa.it/
 			case 'OSM4': { mapType = "OSM4"; break;}
 			case 'OSM5': { mapType = "OSM5"; break;}
 			case 'OSM6': { mapType = "OSM6"; break;}
+			case 'SKYVECTOR': { mapType = "SKYVECTOR"; break;}
 			default: { mapType = google.maps.MapTypeId.HYBRID; break;}
 		}
 		
@@ -244,6 +246,35 @@ Author URI: http://www.pedemontanadelgrappa.it/
 			alt : "MapToolKit - Terrain",
 			maxZoom: 18
 		}));
+
+		map.mapTypes.set("SKYVECTOR", new google.maps.ImageMapType({
+			getTileUrl: function(coord, zoom) {
+				// - this works: http://skyvector.com/api/lchart?ll=59.8448367,12.0873023,8.64&s=10&t=v&c=sv_597
+				//return "http://skyvector.com/api/lchart?ll=" + coord.x + ".0000000," + coord.y +".0000000,8.64&s=" + zoom + "&t=v&c=sv_597";
+				return "http://skyvector.com/api/lchart?ll=" + coord.x + ".0000000," + coord.y +".0000000,8.64&s=" + zoom + ".jpg";
+			},
+			tileSize: new google.maps.Size(256, 256),
+			name: "SKYVECTOR",
+			alt : "SKYVECTOR VFR",
+			maxZoom: 18
+
+		}));
+
+
+		/*
+		ll: latitude,longitude
+		s: scale or zoom. (1-10) 1=zoomed in, 10=zoomed out.
+		c: the id of the div to contain the chart.
+		i: (optional) specifies exactly which chart to load
+		t: (optional) specifies what type of chart to load, if unavailable it'll degrade to the most "similar"
+		v = VFR Sectional
+		t = VFR TAC
+		l = IFR Low Enroute
+		h = IFR High Enroute
+		a = IFR Area
+		c = Heli
+		g: (optional) target. The only allowed value is "_blank" (there is no _new)
+*/
 			
 		// FULL SCREEN BUTTON
 		var controlDiv = document.createElement('div');
